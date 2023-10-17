@@ -1,0 +1,204 @@
+#include <LedControl.h>
+// https://www.youtube.com/watch?v=NEXjteud3is for any explanations
+int DIN = 12;
+int CS = 11;
+int CLK = 10;
+
+
+byte zero[8] = {
+  B01110000,  //0
+  B10001000,
+  B10011000,
+  B10101000,
+  B11001000,
+  B10001000,
+  B01110000,
+};
+byte one[8] = {
+  B01000000,  //1
+  B11000000,
+  B01000000,
+  B01000000,
+  B01000000,
+  B01000000,
+  B11100000,
+};
+ byte two[8] = {
+   ///0 - 9 , A - F
+      B01110000,  //2
+      B10001000,
+      B00001000,
+      B00010000,
+      B00100000,
+      B01000000,
+      B11111000,};
+
+  byte three[8] = {
+      B11111000,  //3
+      B00010000,
+      B00100000,
+      B00010000,
+      B00001000,
+      B10001000,
+      B01110000,};
+
+   byte four[8] = {
+      B00010000,  //4
+      B00110000,
+      B01010000,
+      B10010000,
+      B11111000,
+      B00010000,
+      B00010000,};
+
+   byte five[8] = {
+      B11111000,  //5
+      B10000000,
+      B11110000,
+      B00001000,
+      B00001000,
+      B10001000,
+      B01110000,};
+
+  byte six[8] = {
+      B00110000,  //6
+      B01000000,
+      B10000000,
+      B11110000,
+      B10001000,
+      B10001000,
+      B01110000,};
+
+   byte seven[8] = {
+      B11111000,  //7
+      B10001000,
+      B00001000,
+      B00010000,
+      B00100000,
+      B00100000,
+      B00100000,};
+
+   byte eight[8] = {
+      B01110000,  //8
+      B10001000,
+      B10001000,
+      B01110000,
+      B10001000,
+      B10001000,
+      B01110000,};
+
+   byte nine[8] = {
+      B01110000,  //9
+      B10001000,
+      B10001000,
+      B01111000,
+      B00001000,
+      B00010000,
+      B01100000,};
+
+ byte ten[8] = {
+    B01110000,  //A
+    B10001000,
+    B10001000,
+    B10001000,
+    B11111000,
+    B10001000,
+    B10001000,};
+
+  byte eleven[8] = {
+    B11110000,  //B
+    B10001000,
+    B10001000,
+    B11110000,
+    B10001000,
+    B10001000,
+    B11110000,};
+
+  byte twelve[8] = {
+    B01110000,  //C
+    B10001000,
+    B10000000,
+    B10000000,
+    B10000000,
+    B10001000,
+    B01110000,};
+
+  byte thirteen[8] = {
+    B11100000,  //D
+    B10010000,
+    B10001000,
+    B10001000,
+    B10001000,
+    B10010000,
+    B11100000,};
+
+ byte fourteen[8] = {
+    B11111000,  //E
+    B10000000,
+    B10000000,
+    B11110000,
+    B10000000,
+    B10000000,
+    B11111000,};
+
+  byte fifteen[8] = {
+    B11111000,  //F
+    B10000000,
+    B10000000,
+    B11110000,
+    B10000000,
+    B10000000,
+    B10000000,
+    };
+
+
+LedControl lc(DIN, CLK, CS, 1);
+
+void setup() {
+  lc.shutdown(0, false);
+  lc.setIntensity( 0, 8);
+  lc.clearDisplay(0);
+
+}
+
+
+void loop() {
+  DisplayBytes(zero);
+  delay(2000);
+  DisplayBytes(one);
+  delay(2000);
+    DisplayBytes(two);
+    delay(2000);
+    DisplayBytes(three);
+    delay(2000);
+    DisplayBytes(four);
+    delay(2000);
+    DisplayBytes(five);
+    delay(2000);
+    DisplayBytes(six);
+    delay(2000);
+    DisplayBytes(seven);
+    delay(2000);
+    DisplayBytes(eight);
+    delay(2000);
+    DisplayBytes(nine);
+    delay(2000);
+    DisplayBytes(ten);
+    delay(2000);
+    DisplayBytes(eleven);
+    delay(2000);
+    DisplayBytes(twelve);
+    delay(2000);
+    DisplayBytes(thirteen);
+    delay(2000);
+    DisplayBytes(fourteen);
+    delay(2000);
+    DisplayBytes(fifteen);
+    delay(2000);
+}
+
+void DisplayBytes(byte image[]) {
+  for (int i = 0; i <= 7; i++) {
+    lc.setRow(0, i, image[i]);
+  }
+}
